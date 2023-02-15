@@ -1,10 +1,7 @@
 import turtle
 
 turtle.shape('turtle')
-turtle.forward(50)
-turtle.left(90)
-turtle.forward(50)
-turtle.left(90)
-turtle.forward(50)
-turtle.left(90)
-turtle.forward(50)
+a = 1
+for a in range(360):
+    turtle.forward(1)
+    turtle.left(1)
