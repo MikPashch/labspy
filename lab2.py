@@ -1,15 +1,9 @@
 import turtle
 
 turtle.shape('turtle')
-x = 100
-
-for i in range(12):
-
-    for s in range(1):
+x = 1
+for i in range(20):
+    for j in range(30):
         turtle.forward(x)
-        turtle.stamp()
-        turtle.left(180)
-        turtle.forward(x)
-        turtle.left(180)
-
-    turtle.left(30)
+        turtle.left(6)
+    x += 1
