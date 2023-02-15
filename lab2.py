@@ -13,4 +13,3 @@ for i in range(12):
         turtle.left(180)
 
     turtle.left(30)
-
