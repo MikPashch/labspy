@@ -1,9 +1,9 @@
 import turtle
 
 turtle.shape('turtle')
-x = 1
-for i in range(20):
-    for j in range(30):
+x = 50
+for i in range(15):
+    for j in range(2):
         turtle.forward(x)
-        turtle.left(6)
-    x += 1
+        turtle.left(90)
+    x += 20
