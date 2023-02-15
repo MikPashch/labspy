@@ -1,17 +1,16 @@
 import turtle
 
 turtle.shape('turtle')
-x = 50
-step = 0
-for i in range(10):
+x = 100
 
-    for s in range(4):
+for i in range(12):
+
+    for s in range(1):
         turtle.forward(x)
-        turtle.left(90)
+        turtle.stamp()
+        turtle.left(180)
+        turtle.forward(x)
+        turtle.left(180)
 
-    x += 40
-    step -= 20
-    turtle.penup()
-    turtle.goto(step, step)
-    turtle.pendown()
+    turtle.left(30)
 
