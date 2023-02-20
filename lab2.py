@@ -1,15 +1,44 @@
-import turtle
-import numpy as np
+import turtle as t
 
-r1 = 50
-r2 = 15
+t.shape("turtle")
+t.penup()
+t.goto(0, - 200)
+t.pendown()
 
-turtle.shape('turtle')
-turtle.penup()
-turtle.setposition(-400, 0)
-turtle.left(90)
-turtle.pendown()
 
-for i in range(10):
-    turtle.circle(-r1, 180)
-    turtle.circle(-r2, 180)
+t.begin_fill()
+t.color("yellow")
+t.circle(200)
+t.end_fill()
+t.penup()
+
+t.goto(-90, 50)
+t.pendown()
+t.begin_fill()
+t.color('blue')
+t.circle(35)
+t.end_fill()
+t.penup()
+
+t.goto(90, 50)
+t.pendown()
+t.begin_fill()
+t.color('blue')
+t.circle(35)
+t.end_fill()
+t.penup()
+
+t.goto(0, 20)
+t.right(90)
+t.color('black')
+t.pendown()
+t.width(10)
+t.forward(40)
+t.penup()
+
+t.goto(100, -40)
+t.color('red')
+t.pendown()
+t.width(10)
+t.circle(-100, 180)
+t.penup()
