@@ -1,9 +1,15 @@
 import turtle
 import numpy as np
 
-turtle.shape('turtle')
+r1 = 50
+r2 = 15
 
-for i in range(3):
-    turtle.circle(50, 360)
-    turtle.circle(-50, 360)
-    turtle.left(360 / 6)
+turtle.shape('turtle')
+turtle.penup()
+turtle.setposition(-400, 0)
+turtle.left(90)
+turtle.pendown()
+
+for i in range(10):
+    turtle.circle(-r1, 180)
+    turtle.circle(-r2, 180)
