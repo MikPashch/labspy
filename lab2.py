@@ -27,7 +27,6 @@ t.color('blue')
 t.circle(35)
 t.end_fill()
 t.penup()
-
 t.goto(0, 20)
 t.right(90)
 t.color('black')
