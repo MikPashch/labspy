@@ -15,3 +15,4 @@ plt.plot(x, x * x - x - 6)
 plt.grid(True)
 
 plt.show()
+#comment
