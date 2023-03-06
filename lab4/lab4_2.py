@@ -69,9 +69,11 @@ window_border_color = (0, 0, 0)
 boat_center = pygame.draw.rect(screen, boat_color, ((450, 190), (150, 40)))
 boat_front = pygame.draw.polygon(screen, boat_color, [(600, 190), (650, 190), (600, 230)])
 boat_rear = pygame.draw.circle(screen, boat_color, (450, 190), 40, draw_bottom_left=True)
-boat_mast = ()
-boat_sail = ()
-boat_window = ()
+boat_mast = pygame.draw.rect(screen, mast_color, ((500, 70), (6, 120)))
+boat_sail = pygame.draw.polygon(screen, sail_color, [(506, 70), (550, 130), (520, 130)]), \
+            pygame.draw.polygon(screen, sail_color, [(506, 190), (550, 130), (520, 130)])
+boat_window = pygame.draw.circle(screen, window_color, (610, 205), 10), \
+              pygame.draw.circle(screen, window_border_color, (610, 205), 10, 2)
 
 
 
