@@ -14,6 +14,7 @@ sea = pygame.draw.rect(screen, (7, 40, 255), ((0, 0 + 350/2), (800, 350/4)))
 
 sand = pygame.draw.rect(screen, (247, 255, 7), ((0, 0 + 350/2 + 350/4), (800, 350/4)))
 
+# sun parameters
 sun = pygame.draw.circle(screen, (247, 255, 7), (700, 50), 40)
 
 # cloud parameters
@@ -75,6 +76,28 @@ boat_sail = pygame.draw.polygon(screen, sail_color, [(506, 70), (550, 130), (520
 boat_window = pygame.draw.circle(screen, window_color, (610, 205), 10), \
               pygame.draw.circle(screen, window_border_color, (610, 205), 10, 2)
 
+
+def draw_sun(surface, x, y, radius, sunbeam):
+    """
+
+    :param surface: sun locates only on the sky surface
+    :param x, y: coordinates the center position of the sun
+    :param radius: radius-size of the sun
+    :param sunbeam: quantity of sun sunbeams
+    :return:
+    """
+    pass
+
+
+def draw_cloud(surface, x, y, form):
+    """
+
+    :param surface: cloud locates only on the sky surface
+    :param x, y: lower left corner of beginning cloud
+    :param form: shape of form cloud sells (circle or ellipse)
+    :return:
+    """
+    pass
 
 
 pygame.display.update()
