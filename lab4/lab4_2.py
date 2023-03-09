@@ -69,7 +69,6 @@ def draw_cloud(surface, x, y, size):
         pygame.draw.circle(screen, cloud_color, (x, y), size)
         x += size
 
-
     y -= size
     x -= (size * 3.5)
 
