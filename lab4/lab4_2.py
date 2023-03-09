@@ -14,37 +14,6 @@ sea = pygame.draw.rect(screen, (7, 40, 255), ((0, 0 + 350/2), (800, 350/4)))
 
 sand = pygame.draw.rect(screen, (247, 255, 7), ((0, 0 + 350/2 + 350/4), (800, 350/4)))
 
-# cloud parameters
-cloud_color = (255, 255, 255)
-cloud_board_color = (0, 0, 0)
-cloud_radius = 15
-cloud_board_size = 1
-cloud_x = 200
-cloud_y = 60
-step_y = 5
-step_x = 20
-
-cloud = pygame.draw.circle(screen, cloud_color, (cloud_x, cloud_y), cloud_radius), \
-        pygame.draw.circle(screen, cloud_board_color, (cloud_x, cloud_y), cloud_radius, cloud_board_size)
-
-cloud2 = pygame.draw.circle(screen, cloud_color, (cloud_x + step_x, 60), cloud_radius), \
-        pygame.draw.circle(screen, cloud_board_color, (cloud_x + step_x, 60), cloud_radius, cloud_board_size)
-
-cloud3 = pygame.draw.circle(screen, cloud_color, (240, 60), 15), \
-        pygame.draw.circle(screen, cloud_board_color, (240, 60), cloud_radius, cloud_board_size)
-
-cloud4 = pygame.draw.circle(screen, cloud_color, (190, 70), 15), \
-        pygame.draw.circle(screen, cloud_board_color, (190, 70), cloud_radius, cloud_board_size)
-
-cloud5 = pygame.draw.circle(screen, cloud_color, (210, 70), 15), \
-        pygame.draw.circle(screen, cloud_board_color, (210, 70), cloud_radius, cloud_board_size)
-
-cloud6 = pygame.draw.circle(screen, cloud_color, (230, 70), 15), \
-        pygame.draw.circle(screen, cloud_board_color, (230, 70), cloud_radius, cloud_board_size)
-
-cloud7 = pygame.draw.circle(screen, cloud_color, (250, 70), cloud_radius), \
-        pygame.draw.circle(screen, cloud_board_color, (250, 70), cloud_radius, cloud_board_size)
-
 # parasol parameters
 parasol_color = (255, 128, 0)
 parasol_color_lines = (0, 0, 0)
@@ -82,19 +51,30 @@ def draw_sun(surface, x, y, radius):
     :param radius: radius-size of the sun
     :return:
     """
-    pygame.draw.circle(surface, (247, 255, 7), (x, y), radius) # 1 - surface, 2 - color, 3 - position, 4 - radius
+    pygame.draw.circle(surface, (247, 255, 7), (x, y), radius)  # 1 - surface, 2 - color, 3 - position, 4 - radius
 
 
-def draw_cloud(surface, x, y, size, form):
+def draw_cloud(surface, x, y, size):
     """
 
     :param surface: cloud locates only on the sky surface
-    :param x, y: lower left corner of beginning cloud.
+    :param x, y: center of the first lower left cloud's cell.
     :param size: size of cloud - determinate buy radius of cell.
-    :param form: shape of form cloud sells (circle or ellipse)
     :return:
     """
-    pass
+    # cloud constant parameters
+    cloud_color = (255, 255, 255)
+
+    for i in range(4):  # 4 lowest cells of 1 cloud
+        pygame.draw.circle(screen, cloud_color, (x, y), size)
+        x += size
+
+    y -= size
+    x -= (size * 3.5)
+
+    for i in range(3):  # 3 highest cells of 1 cloud
+        pygame.draw.circle(screen, cloud_color, (x, y), size)
+        x += size
 
 
 def draw_parasol(surface, x, y, width, height):
@@ -119,7 +99,10 @@ def draw_ship(surface, x, y, width, height):
     pass
 
 
-draw_sun(screen, 300, 100, 25)
+draw_sun(screen, 700, 60, 25)
+
+draw_cloud(screen, 100, 80, 20)
+
 
 pygame.display.update()
 clock = pygame.time.Clock()
