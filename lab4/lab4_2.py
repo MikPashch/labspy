@@ -1,5 +1,5 @@
 import pygame
-
+from pygame.draw import *
 pygame.init()
 
 FPS = 30
@@ -33,6 +33,7 @@ sail_color = (192, 192, 192)
 window_color = (255, 255, 255)
 window_border_color = (0, 0, 0)
 
+
 boat_center = pygame.draw.rect(screen, boat_color, ((450, 190), (150, 40)))
 boat_front = pygame.draw.polygon(screen, boat_color, [(600, 190), (650, 190), (600, 230)])
 boat_rear = pygame.draw.circle(screen, boat_color, (450, 190), 40, draw_bottom_left=True)
@@ -49,6 +50,7 @@ def draw_sun(surface, x, y, radius):
     :param surface: sun locates only on the sky surface
     :param x, y: coordinates the center position of the sun
     :param radius: radius-size of the sun
+    :param sunbeam: quantity of sun sunbeams
     :return:
     """
     pygame.draw.circle(surface, (247, 255, 7), (x, y), radius)  # 1 - surface, 2 - color, 3 - position, 4 - radius
