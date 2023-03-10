@@ -50,7 +50,6 @@ def draw_sun(surface, x, y, radius):
     :param surface: sun locates only on the sky surface
     :param x, y: coordinates the center position of the sun
     :param radius: radius-size of the sun
-    :param sunbeam: quantity of sun sunbeams
     :return:
     """
     pygame.draw.circle(surface, (247, 255, 7), (x, y), radius)  # 1 - surface, 2 - color, 3 - position, 4 - radius
