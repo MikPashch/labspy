@@ -29,8 +29,8 @@ def draw_sun(x, y, radius):
 def draw_cloud(x, y, size):
     """
 
-    :param x:
-    :param x, y: center of the first lower left cloud's cell.
+    :param x: center of the first lower left cloud's cell.
+    :param y: center of the first lower left cloud's cell.
     :param size: size of cloud - determinate buy radius of cell.
     :return:
     """
@@ -52,10 +52,10 @@ def draw_cloud(x, y, size):
 def draw_parasol(x, y, width, height):
     """
 
-    :param x:
-    :param width:
-    :param x, y: height left corner of beginning parasol pillar
-    :param width, height : size of parasol
+    :param x: height left corner of beginning parasol pillar
+    :param y: height left corner of beginning parasol pillar
+    :param width: size of parasol
+    :param height: size of parasol
     :return:
     """
     # parasol constant parameters
@@ -71,10 +71,11 @@ def draw_parasol(x, y, width, height):
     # parasol head
     pygame.draw.polygon(screen, parasol_color, [(x - (width / 2 + pillar_width / 2), y + head_height),
                                                 (x + (width / 2 + pillar_width / 2), y + head_height),
-                                                (x + pillar_width, y), (x, y)])
+                                                (x + pillar_width, y),
+                                                (x, y)])
 
     x_left0 = x  # to define x coordinates for lines in head
-    y0 = y  # # to define y coordinates for lines in head
+    y0 = y  # to define y coordinates for lines in head
 
     for i in range(3):  # decor lines, 3 - is a quantity of the left side head parasol
         x -= width / 8
@@ -98,23 +99,33 @@ def draw_boat(x, y, width, height):
     :return:
     """
 
-    # boat constant parameters
+    # boat color parameters
     boat_color = (153, 76, 0)
     mast_color = (0, 0, 0)
     sail_color = (192, 192, 192)
     window_color = (255, 255, 255)
     window_border_color = (0, 0, 0)
 
-    boat_center = pygame.draw.rect(screen, boat_color, ((450, 190), (150, 40)))
-    boat_front = pygame.draw.polygon(screen, boat_color, [(600, 190), (650, 190), (600, 230)])
-    boat_rear = pygame.draw.circle(screen, boat_color, (450, 190), 40, draw_bottom_left=True)
-    boat_mast = pygame.draw.rect(screen, mast_color, ((500, 70), (6, 120)))
-    boat_sail = pygame.draw.polygon(screen, sail_color, [(506, 70), (550, 130), (520, 130)]), \
-        # pygame.draw.polygon(screen, sail_color, [(506, 190), (550, 130), (520, 130)])
-    boat_window = pygame.draw.circle(screen, window_color, (610, 205), 10), \
-        # pygame.draw.circle(screen, window_border_color, (610, 205), 10, 2)
+    # boat_center
+    pygame.draw.rect(screen, boat_color, ((x, y), (width, height)))
 
-    pass
+    # boat_front
+    pygame.draw.polygon(screen, boat_color, [(x + width, y), (x + width * 1.2, y), (x + width, y + height)])
+
+    # boat_window pygame.draw.circle(screen, window_color, (610, 205), 10),
+    # pygame.draw.circle(screen, window_border_color, (610, 205), 10, 2)
+
+    # boat_rear
+    pygame.draw.circle(screen, boat_color, (x, y), height, draw_bottom_left=True)
+
+    # boat_mast
+    mast_width = width * 0.03
+    mast_height = width * 0.8
+    pygame.draw.rect(screen, mast_color, ((x + (width / 2), y - mast_height), (mast_width, mast_height)))
+
+    # boat_sail
+    pygame.draw.polygon(screen, sail_color, [(506, 70), (550, 130), (520, 130)])
+    pygame.draw.polygon(screen, sail_color, [(506, 190), (550, 130), (520, 130)])
 
 
 draw_sun(700, 60, 25)
@@ -122,6 +133,8 @@ draw_sun(700, 60, 25)
 draw_cloud(100, 80, 20)
 
 draw_parasol(200, 200, 80, 100)
+
+draw_boat(450, 200, 200, 30)
 
 draw_parasol(400, 220, 50, 80)
 
