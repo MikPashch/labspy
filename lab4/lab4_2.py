@@ -1,4 +1,5 @@
 import pygame
+from math import sqrt
 
 pygame.init()
 
@@ -34,11 +35,13 @@ def draw_cloud(x, y, size):
     :param size: size of cloud - determinate buy radius of cell.
     :return:
     """
-    # cloud constant parameters
+    # cloud color parameters
     cloud_color = (255, 255, 255)
+    cloud_border_color = (0, 0, 0)
 
     for i in range(4):  # 4 lowest cells of 1 cloud
         pygame.draw.circle(screen, cloud_color, (x, y), size)
+        pygame.draw.circle(screen, cloud_border_color, (x, y), size, 1)
         x += size
 
     y -= size
@@ -46,6 +49,7 @@ def draw_cloud(x, y, size):
 
     for i in range(3):  # 3 highest cells of 1 cloud
         pygame.draw.circle(screen, cloud_color, (x, y), size)
+        pygame.draw.circle(screen, cloud_border_color, (x, y), size, 1)
         x += size
 
 
@@ -54,8 +58,8 @@ def draw_parasol(x, y, width, height):
 
     :param x: height left corner of beginning parasol pillar
     :param y: height left corner of beginning parasol pillar
-    :param width: size of parasol
-    :param height: size of parasol
+    :param width: width of parasol
+    :param height: height of parasol
     :return:
     """
     # parasol constant parameters
@@ -92,10 +96,10 @@ def draw_parasol(x, y, width, height):
 def draw_boat(x, y, width, height):
     """
 
-    :param x:
-    :param width:
-    :param x, y:
-    :param width, height:
+    :param x: left height corner of body center
+    :param y: left height corner of body center
+    :param width: wight of body center
+    :param height: height of body center
     :return:
     """
 
@@ -106,35 +110,45 @@ def draw_boat(x, y, width, height):
     window_color = (255, 255, 255)
     window_border_color = (0, 0, 0)
 
-    # boat_center
+    # boat_center - main body frame element
     pygame.draw.rect(screen, boat_color, ((x, y), (width, height)))
 
-    # boat_front
-    pygame.draw.polygon(screen, boat_color, [(x + width, y), (x + width * 1.2, y), (x + width, y + height)])
+    # boat_front part
+    cof = 0.3   # coefficient of front triangle - regulation of nose width
+    pygame.draw.polygon(screen, boat_color, [(x + width, y),
+                                             (x + width + (width * cof), y),
+                                             (x + width, y + height)])
 
-    # boat_window pygame.draw.circle(screen, window_color, (610, 205), 10),
-    # pygame.draw.circle(screen, window_border_color, (610, 205), 10, 2)
+    # boat_window
+    # r = coord. of window center inside of boat_front triangle
+    r = ((width * cof + height - (sqrt((width * cof)**2 + height**2))) / 2)
+    pygame.draw.circle(screen, window_color, (x + width + r, y + r), r * 0.8),  # boat_window
+    pygame.draw.circle(screen, window_border_color, (x + width + r, y + r), r * 0.8, 2)     # border_window
 
-    # boat_rear
+    # boat rear part
     pygame.draw.circle(screen, boat_color, (x, y), height, draw_bottom_left=True)
 
-    # boat_mast
+    # boat mast and sail
     mast_width = width * 0.03
     mast_height = width * 0.8
-    pygame.draw.rect(screen, mast_color, ((x + (width / 2), y - mast_height), (mast_width, mast_height)))
+    pygame.draw.rect(screen, mast_color, ((x + (width / 2), y - mast_height), (mast_width, mast_height)))   # mast
+    pygame.draw.polygon(screen, sail_color, [(x + (width / 2) + mast_width, y),     # first coord. of sail
+                                             (x + (width / 1.5), y - mast_height / 2),  # second coord. of sail
+                                             (x + (width / 2) + mast_width, y - mast_height),    # third coord. of sail
+                                             (x + width, y - mast_height / 2)])     # fours coord. of sail
 
-    # boat_sail
-    pygame.draw.polygon(screen, sail_color, [(506, 70), (550, 130), (520, 130)])
-    pygame.draw.polygon(screen, sail_color, [(506, 190), (550, 130), (520, 130)])
 
+# drawing objects on our surface
 
 draw_sun(700, 60, 25)
 
 draw_cloud(100, 80, 20)
 
-draw_parasol(200, 200, 80, 100)
-
 draw_boat(450, 200, 200, 30)
+
+draw_boat(180, 190, 150, 25)
+
+draw_parasol(200, 200, 80, 100)
 
 draw_parasol(400, 220, 50, 80)
 
